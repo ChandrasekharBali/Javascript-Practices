@@ -1,3 +1,5 @@
+ //https://voidchetan.github.io/voidchetan/javascript/variables.html
+ 
  // Task1: create 3 variables to store firstName, middleName, lastName and Generate fullName by joining 3 variable and print full name in console.
         var firstName = 'Chandra';
         var middleName = 'Sekhar';
