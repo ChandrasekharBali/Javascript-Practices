@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 
 <head>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<style>
+    .pt-50 {
+        padding-top: 50px;
+    }
+    body.container {
+        padding-bottom: 50px;
+    }
+</style>
 </head>
 
-<body>
+<body class="container">
 
     <h1>
         Hello world
@@ -31,5 +39,165 @@
     </form>
     <p id="newText"></p>
 
+<div class="pt-50">Events
+ Task 1 (Click Event)
+Create on button Click Me. 
+ On the click on button showcase alert with text Hello Javascript</div>
+
+
+    <button onclick="clickme()">Click me</button>
+
+
+<div class="pt-50">Task 2 (onblur Event or onchange)
+Take three textboxes.
+Do multiplication of textbox 1 and 2 and store the result in textbox 3.</div>
+    <div class="row pt-40">
+        <div class="col-md-4"><input class="form-control" id="text1" type="text" onblur="onBlurEvent()"></div>
+        <div class="col-md-4"><input class="form-control" id="text2" type="text" onblur="onBlurEvent()"></div>
+        <div class="col-md-4"><input class="form-control" id="text3" type="text"></div>
+    </div>
+
+
+<div class="pt-50">
+Task 3 (Keydown Event)
+Take a one textbox and apply Keydown event in that textbox
+On the click on textbox you have to showcase alert box and show the message (You have pressed a key inside text input!)
+</div>
+
+<div class="col-md-12">
+<input class="form-control" type="text" onkeydown="keydownevent()">
+</div>
+
+
+<div class="pt-50">
+Task 4 (Change Event)
+Create a dropdown with options of fruits
+add on change event and show selected value in strong tag
+example
+</div>
+
+<div>
+    <select class="form-control" id="fruits" onchange="onChangeEvent(event)">
+        <option value="Orange">Orange</option>
+        <option value="Apple">Apple</option>
+        <option value="Papaya">Papaya</option>
+        <option value="Grape">Grape</option>
+        <option value="Banana">Banana</option>
+    </select>
+    <strong id="storefruitname"></strong>
+</div>
+
+<div class="pt-50">
+Task 6 (Click Event)
+Take a three button click on button and show one alert
+</div>
+<div>
+    <button class="button" onclick="buttonClickEvent('Button1')">Button1</button>
+    <button class="button" onclick="buttonClickEvent('Button2')">Button2</button>
+    <button class="button" onclick="buttonClickEvent('Button3')">Button3</button>
+</div>
+
+<div class="pt-50">
+Task 7 (Address Generator)
+</div>
+<div>
+    <div class="col-6 col-sm-4 col-md-4 mb-4 px-1">
+                <div class="task-container">
+                    <div class="text-left"></div>
+                    <div class="row">
+                        <div class="col-6">
+                            <input type="text" id="txtPlot" class="form-control" placeholder="Plot No">
+                        </div>
+                        <div class="col-6">
+                            <input type="text" id="txtCity" class="form-control" placeholder="City">
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-6">
+                            <input type="text" id="txtState" class="form-control" placeholder="State">
+                        </div>
+                        <div class="col-6">
+                            <input type="text" id="txtPin" class="form-control" placeholder="Pin">
+                        </div>
+                    </div>
+                    <div class="row text-center mt-4">
+                        <div class="col-12">
+                            <button class="btn btn-sm btn-success" onclick="onOperation('address')">Click To Get
+                                Full Address Here</button>
+
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <p id="address"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div>
+
+
+<script>
+
+// Task 2 (onblur Event or onchange)
+// Take three textboxes.
+// Do multiplication of textbox 1 and 2 and store the result in textbox 3.
+
+function onBlurEvent() {
+let Num1 = document.getElementById('text1').value;
+let Num2 = document.getElementById('text2').value;
+
+document.getElementById('text3').value = Num1 * Num2;
+}
+
+// Task 3 (Keydown Event)
+// Take a one textbox and apply Keydown event in that textbox
+// On the click on textbox you have to showcase alert box and show the message (You have pressed a key inside text input!)
+
+function keydownevent() {
+alert('You have pressed a key inside text input!');
+}
+
+
+// Task 4 (Change Event)
+// Create a dropdown with options of fruits
+// add on change event and show selected value in strong tag
+
+function onChangeEvent(myevent) {
+document.getElementById('storefruitname').textContent = myevent.target.value;
+}
+
+
+// Task 6 (Click Event)
+// Take a three button click on button and show one alert
+function buttonClickEvent(value) {
+    alert(value + 'clicked');
+}
+
+//Task 7 (Address Generator)
+function onOperation() {
+    let txtPlot = document.getElementById('txtPlot').value;
+    let txtCity = document.getElementById('txtCity').value;
+    let txtState = document.getElementById('txtState').value;
+    let txtPin = document.getElementById('txtPin').value;
+
+        if (!txtPlot || !txtCity || !txtState || !txtPin) {
+            alert("Please fill all fields");
+            return;
+        }
+
+    let fullAddress = `${txtPlot}, ${txtCity}, ${txtState}, ${txtPin}`;
+
+    document.getElementById('address').textContent = fullAddress;
+
+
+}
+    
+
+</script>
+
+
+
         <script src="variables.js"></script>
+        <script src="events.js"></script>
 </body>
