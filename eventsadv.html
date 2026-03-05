@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+
+<body class="container">
+    <!-- Task 1 -->
+
+    <button id="enableCountbtn" onclick="enableCount()">Enable Count</button>
+    <button id="recordCountbtn" onclick="recordCount()">Record Counts</button>
+    <p id="countbox">You clicked 0 times</p>
+
+    <!-- Task 2 -->
+
+    <div class="row mb-1">
+        <div class="col-sm-6">
+            <input type="text" class="unq form-control name-place" id="txtFName" placeholder="First Name">
+        </div>
+        <div class="col-sm-6">
+            <input type="text" class="unq form-control name-place" id="txtMName" placeholder="Middle Name">
+        </div>
+    </div>
+
+    <div class="row mb-1">
+        <div class="col-sm-6">
+            <input type="text" class="unq form-control name-place" id="txtLName" placeholder="Last Name">
+        </div>
+        <div class="col-sm-6">
+            <input type="text" class="unq form-control name-place" id="txtMOBILE" placeholder="Mobile">
+        </div>
+    </div>
+
+    <button id="generate" onclick="generateID()">Generate Unique ID</button>
+
+    <p id="txtUniqueID"></p>
+
+    <p id="datePrint"></p>
+
+    <ul id="keysList">
+       
+    </ul>
+    
+    <ul id="valuesList">
+
+    </ul>
+
+<form id="myForm">
+  <!-- Email -->
+  <label>Email:</label><br>
+  <input type="text" id="email"><br>
+  <span id="emailMsg"></span><br><br>
+  <!-- Phone -->
+  <label>Phone:</label><br>
+  <input type="text" id="phone"><br>
+  <span id="phoneMsg"></span><br><br>
+  <!-- Password -->
+  <label>Password:</label><br>
+  <input type="password" id="password"><br>
+  <span id="passwordStrength" class="strength"></span><br><br>
+  <!-- Confirm Password -->
+  <label>Confirm Password:</label><br>
+  <input type="password" id="confirmPassword"><br>
+  <span id="matchMsg"></span><br><br>
+
+  <button type="submit" id="submitBtn" disabled>Submit</button>
+
+</form>
+
+
+
+
+    <script>
+// Task5 - Real-time Form Validation
+// Create form with fields: email, phone, password, confirm password
+// On each onchange/blur event:
+// Email: validate format, show valid/invalid icon
+// Phone: validate 10 digits only, show count/validation
+// Password: show strength indicator (Weak/Good/Strong)
+// Compare passwords, show match status
+// Enable "Submit" button only when all fields are valid
+
+const email = document.getElementById("email");
+const phone = document.getElementById("phone");
+const password = document.getElementById("password");
+const confirmPassword = document.getElementById("confirmPassword");
+const submitBtn = document.getElementById("submitBtn");
+
+let emailValid = false;
+let phoneValid = false;
+let passwordValid = false;
+let matchValid = false;
+
+
+
+
+
+// Task 4
+// Create a Object to store Employee Details - name, id, city, state etc
+// we need to print keys we have in object - in <UL> - <Li> tag
+
+    let employeeDetails = {
+        name : 'Chandrasekhar',
+        id : '123456',
+        city : 'Visakhapatnam',
+        state : 'Andhra Pradesh'
+    }
+
+    const keys = Object.keys(employeeDetails);
+    console.log(keys);
+  
+    const ul = document.getElementById('keysList');
+
+    keys.forEach(function(key) {
+       const li = document.createElement('li');
+        li.textContent = key;
+
+        ul.appendChild(li);
+    });
+
+        const values = Object.values(employeeDetails);
+    console.log(values);
+  
+    const ull = document.getElementById('valuesList');
+
+    values.forEach(function(value) {
+       const lio = document.createElement('li');
+        lio.textContent = value;
+
+        ull.appendChild(lio);
+    });
+
+
+
+//     Task 3
+// create a varibel store current date into it
+// Add 2 Months into that day & add 6 days into date..then print new Date in <p> Tag
+
+    var currentDate = new Date();
+
+    currentDate.setMonth(currentDate.getMonth() + 2);
+
+    currentDate.setDate(currentDate.getDate() + 6);
+
+    var newDate = `${currentDate.getDate()} - ${currentDate.getMonth() + 1} - ${currentDate.getFullYear()}`;
+
+    console.log(newDate);
+    document.getElementById('datePrint').textContent = newDate;
+        
+        //Task 2
+//         Create Unique Customer Id
+// Create 4 Text fields to Enter First Name, Middle Name, Last Name, and Mobile No of Customer
+// Create a button Generate Unique Id
+// Unique Id => current Date day + First 2 Letters of First Name + Last 2 Letters of Last Name + Last 4 Digits of Mobile No - separated by -
+// On Change of each textbox, Unique Id should be created and displayed in a <p> tag below
+
+function generateID() {
+    const firstName = document.getElementById('txtFName').value;
+    const middleName = document.getElementById('txtMName').value;
+    const lastName = document.getElementById('txtLName').value;
+    const mobileNumber = document.getElementById('txtMOBILE').value;
+
+    let uniqueID = new Date().getDate() + "-" + firstName.slice(0, 2) + "-" + lastName.slice(-2) + "-" + mobileNumber.slice(-4);
+
+    document.getElementById('txtUniqueID').textContent = `Your unique ID is ${uniqueID}`;
+}
+
+
+        // Task 1
+//         Create one button Enable Count.
+// Create one more button to Record Counts.
+// On clicking the Record Count button, we need to count how many times the user has clicked the button, but only when Enable Count is clicked.
+        var isEnabled = false;
+        function enableCount() {
+            isEnabled = true;
+            document.getElementById('enableCountbtn').textContent = 'Count Enabled';
+        }
+        let count = 0;
+        function recordCount() {
+            if (isEnabled) {
+                console.log('button Enabled');
+                count++;
+            } else {
+                alert('Please enable count');
+            }
+            document.getElementById('countbox').innerText = `You clicked ${count} times`;
+
+        }
+
+
+    </script>
+</body>
+
+</html>
