@@ -34,6 +34,45 @@ function onChangeEvent(myevent) {
 document.getElementById('storefruitname').textContent = myevent.target.value;
 }
 
+// Task 5 (Calculator)
+function onCalculator(opp) {
+const txtNum1 = parseFloat(document.getElementById('txtNum1').value);
+const txtNum2 = parseFloat(document.getElementById('txtNum2').value);
+let result;
+
+if(isNaN(txtNum1) || isNaN(txtNum2)) {
+    result = "Please enter valid numbers";
+    console.log('Please enter valid numbers');
+    alert('pls enter valid numbers');
+}
+else {
+    switch(opp) {
+        case 'add' :
+            result = txtNum1 + txtNum2;
+            break;
+        case 'sub' :
+            result = txtNum1 - txtNum2;
+            break;
+        case 'mul' :
+            result = txtNum1 * txtNum2;
+            break;
+        case 'div' :
+          if((txtNum2 !==0)) {
+            result = txtNum1 / txtNum2;
+          }
+          else {
+            result = "can't divide by zero";
+          }
+        
+            break;
+        default :
+            result = 'invalid operation';
+    
+    }
+}
+document.getElementById('txtResult').value = result;
+
+}
 
 // Task 6 (Click Event)
 // Take a three button click on button and show one alert
